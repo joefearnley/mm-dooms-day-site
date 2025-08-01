@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import plasmaMan from './assets/plasma_man.jpg'
 import nasaMan from './assets/nasa_man.png'
 import subZero from './assets/sub_zero.jpg'
@@ -8,10 +8,41 @@ import genertorMan from './assets/genertor_man.jpg'
 import waterfallMan from './assets/waterfall_man.jpg'
 import fossilMan from './assets/fossil_man.jpg'
 import propaneMan from './assets/propane_man.jpg'
-
 import './App.css'
 
 function App() {
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [levels, setLevels] = useState([]);
+    const apiToken = import.meta.env.REACT_APP_API_KEY;
+
+    console.log('API Token:', apiToken);
+
+    const fetchLevels = async () => {
+        setIsLoading(true);
+
+        const apiUrl = import.meta.env.API_URL;
+        console.log('API Url:', apiUrl);
+
+        try {
+            const response = await fetch(apiUrl, {
+                headers: {
+                    'Authorization': `Bearer ${apiToken}`
+                }
+            });
+            const data = await response.json();
+            setLevels(data);
+        } catch (error) {
+            console.error('Error fetching levels:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchLevels();
+    }, [])
+
 
     return (
         <>
