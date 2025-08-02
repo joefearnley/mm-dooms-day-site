@@ -10,3 +10,8 @@
         padding-inline: 2rem;
     }
 }
+
+body {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+}

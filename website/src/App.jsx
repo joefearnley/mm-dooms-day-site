@@ -20,12 +20,11 @@ function App() {
             });
 
             const json = await response.json();
-
             setLevels(json.data);
         } catch (error) {
             console.error('Error fetching levels:', error);
         } finally {
-            // setIsLoading(false);
+            setIsLoading(false);
         }
     };
 
@@ -43,7 +42,7 @@ function App() {
             </div>
             {isLoading ? (
                     <div className="text-center">
-                        <h2 className="text-2xl mb-4">Loading Levels</h2>
+                        <h2 className="text-xl mb-4">Loading Levels</h2>
                         <span className="loading loading-bars loading-xl"></span>
                     </div>
                 ):(
