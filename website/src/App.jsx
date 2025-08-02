@@ -1,28 +1,16 @@
 import { useState, useEffect } from 'react'
-import plasmaMan from './assets/plasma_man.jpg'
-import nasaMan from './assets/nasa_man.png'
-import subZero from './assets/sub_zero.jpg'
-import militaryMan from './assets/military_man.jpg'
-import wilyRigCastle from './assets/wily_rig_castle.png'
-import genertorMan from './assets/genertor_man.jpg'
-import waterfallMan from './assets/waterfall_man.jpg'
-import fossilMan from './assets/fossil_man.jpg'
-import propaneMan from './assets/propane_man.jpg'
 import './App.css'
 
 function App() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [levels, setLevels] = useState([]);
-    const apiToken = import.meta.env.REACT_APP_API_KEY;
-
-    console.log('API Token:', apiToken);
+    const apiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
 
     const fetchLevels = async () => {
         setIsLoading(true);
 
-        const apiUrl = import.meta.env.API_URL;
-        console.log('API Url:', apiUrl);
+        const apiUrl = `${import.meta.env.VITE_API_URL}/levels/?populate=*`;
 
         try {
             const response = await fetch(apiUrl, {
@@ -30,12 +18,14 @@ function App() {
                     'Authorization': `Bearer ${apiToken}`
                 }
             });
-            const data = await response.json();
-            setLevels(data);
+
+            const json = await response.json();
+
+            setLevels(json.data);
         } catch (error) {
             console.error('Error fetching levels:', error);
         } finally {
-            setIsLoading(false);
+            // setIsLoading(false);
         }
     };
 
@@ -51,82 +41,28 @@ function App() {
                     <h1 className="text-6xl font-bold">Mega Man Dooms Day</h1>
                 </div>
             </div>
-            <div className="container mx-auto">
-                <div className="grid grid-cols-3 gap-6">
-                    <div>
-                        <a href="#" className="">
-                            <img src={plasmaMan} className="max-h-48  mx-auto boss-image" alt="Plasma Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Plasma Man</a>
-                        </h3>
+            {isLoading ? (
+                    <div className="text-center">
+                        <h2 className="text-2xl mb-4">Loading Levels</h2>
+                        <span className="loading loading-bars loading-xl"></span>
                     </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={nasaMan} className="max-h-48  mx-auto boss-image" alt="Nasa Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Nasa Man</a>
-                        </h3>
+                ):(
+                    <div className="container mx-auto">
+                        <div className="grid grid-cols-3 gap-6">
+                                {levels.map(((level) => (
+                                    <div key={level.id} className="level">
+                                        <a href={level.url}>
+                                            <img src={`${import.meta.env.VITE_API_URL}${level.image.url}`} className="max-h-48  mx-auto boss-image" alt={level.name} />
+                                        </a>
+                                        <h3 className="text-2xl font-bold text-center mt-4">
+                                            <a href={level.url}>{level.name}</a>
+                                        </h3>
+                                    </div>
+                                )))}
+                        </div>
                     </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={subZero} className="max-h-48  mx-auto boss-image" alt="Sub Zero" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Sub Zero</a>
-                        </h3>
-                    </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={militaryMan} className="max-h-48  mx-auto boss-image " alt="Military Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Military Man</a>
-                        </h3>
-                    </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={wilyRigCastle} className="max-h-48  mx-auto boss-image" alt="Wily Rig Castle" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Wily Rig Castle</a>
-                        </h3>
-                    </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={genertorMan} className="max-h-48  mx-auto boss-image" alt="Genertor Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Genertor Man</a>
-                        </h3>
-                    </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={waterfallMan} className="max-h-48  mx-auto boss-image" alt="Waterfall Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Waterfall Man</a>
-                        </h3>
-                    </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={fossilMan} className="max-h-48  mx-auto boss-image" alt="Fossil Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Fossil Man</a>
-                        </h3>
-                    </div>
-                    <div>
-                        <a href="#" className="">
-                            <img src={propaneMan} className="max-h-48 mx-auto boss-image" alt="Propane Man" />
-                        </a>
-                        <h3 className="text-2xl font-bold text-center mt-4">
-                            <a href="#">Propane Man</a>
-                        </h3>
-                    </div>
-                </div>
-            </div>
+                )
+            }
         </>
     )
 }
