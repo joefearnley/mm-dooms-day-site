@@ -8,9 +8,7 @@ function App() {
     const apiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
 
     const fetchLevels = async () => {
-        setIsLoading(true);
-
-        const apiUrl = `${import.meta.env.VITE_API_URL}/levels/?populate=*`;
+        const apiUrl = `${import.meta.env.VITE_STRAPI_API_URL}/levels/?populate=*`;
 
         try {
             const response = await fetch(apiUrl, {
@@ -29,7 +27,8 @@ function App() {
     };
 
     useEffect(() => {
-        fetchLevels();
+        setIsLoading(true);
+        setTimeout(fetchLevels, 1000);
     }, [])
 
 
@@ -51,7 +50,7 @@ function App() {
                                 {levels.map(((level) => (
                                     <div key={level.id} className="level">
                                         <a href={level.url}>
-                                            <img src={`${import.meta.env.VITE_API_URL}${level.image.url}`} className="max-h-48  mx-auto boss-image" alt={level.name} />
+                                            <img src={`${import.meta.env.VITE_STRAPI_BASE_URL}${level.image.url}`} className="max-h-48  mx-auto boss-image" alt={level.name} />
                                         </a>
                                         <h3 className="text-2xl font-bold text-center mt-4">
                                             <a href={level.url}>{level.name}</a>
