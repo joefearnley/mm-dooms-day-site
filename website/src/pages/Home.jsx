@@ -5,20 +5,26 @@ function Home() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [levels, setLevels] = useState([]);
-    const apiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
+    // const apiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
 
     const fetchLevels = async () => {
-        const apiUrl = `${import.meta.env.VITE_STRAPI_API_URL}/levels/?populate=*&sort[0]=sort_order:asc`;
+        const apiUrl = `${import.meta.env.VITE_WP_API_URL}/levels/?acf_format=standardc`;
 
         try {
-            const response = await fetch(apiUrl, {
-                headers: {
-                    'Authorization': `Bearer ${apiToken}`
-                }
-            });
+            // const response = await fetch(apiUrl, {
+            //     headers: {
+            //         'Authorization': `Bearer ${apiToken}`
+            //     }
+            // });
+
+            const response = await fetch(apiUrl);
 
             const json = await response.json();
-            setLevels(json.data);
+
+
+            console.log(json);
+
+            setLevels(json);
         } catch (error) {
             console.error('Error fetching levels:', error);
         } finally {
