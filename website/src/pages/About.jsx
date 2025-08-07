@@ -4,22 +4,18 @@ import { useState, useEffect } from 'react'
 function About() {
 
     const [isLoading, setIsLoading] = useState(false);
-    const [content, setContent] = useState('');
+    const [pageContent, setPageContent] = useState('');
+    const [pageTitle, setPageTitle] = useState('');
 
-    const fetchAboutData = async () => {
-        const apiUrl = `${import.meta.env.VITE_STRAPI_API_URL}/about?populate=*`;
-        const apiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
+    const fetchAboutPageData = async () => {
+        const apiUrl = `${import.meta.env.VITE_WP_API_URL}/pages?slug=about`;
 
         try {
-            const response = await fetch(apiUrl, {
-                headers: {
-                    'Authorization': `Bearer ${apiToken}`
-                }
-            });
-
+            const response = await fetch(apiUrl);
             const json = await response.json();
-            console.log(json.data.blocks[0].body);
-            setContent(json.data.blocks[0].body);
+
+            setPageContent(json[0].content.rendered);
+            setPageTitle(json[0].title.rendered);
         } catch (error) {
             console.error('Error fetching levels:', error);
         } finally {
@@ -29,14 +25,16 @@ function About() {
 
     useEffect(() => {
         setIsLoading(true);
-        setTimeout(fetchAboutData, 1000);
+        setTimeout(fetchAboutPageData, 1000);
     }, [])
 
     return (
-        <>
+        <div className="inside-page">
             <div className="container mx-auto">
                 <div className="mx-auto text-center pt-12 pb-24">
-                    <h1 className="text-6xl font-bold">About This Site</h1>
+                    <h1 className="text-6xl font-bold">
+                        About this Site
+                    </h1>
                 </div>
             </div>
             {isLoading ? (
@@ -46,11 +44,11 @@ function About() {
             ):(
                 <div className="container mx-auto mb-12">
                     <div className="mx-auto w-5/6">
-                        {content}
+                        <div dangerouslySetInnerHTML={{ __html: pageContent }} />
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 

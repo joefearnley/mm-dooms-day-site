@@ -1,1 +1,5 @@
 
+body .inside-page a {
+    color: var(--color-info);
+    text-decoration: underline;
+}

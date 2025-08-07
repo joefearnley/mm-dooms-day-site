@@ -8,7 +8,7 @@ function Home() {
     // const apiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
 
     const fetchLevels = async () => {
-        const apiUrl = `${import.meta.env.VITE_WP_API_URL}/levels/?acf_format=standardc`;
+        const apiUrl = `${import.meta.env.VITE_WP_API_URL}/levels/?acf_format=standard`;
 
         try {
             // const response = await fetch(apiUrl, {
@@ -54,11 +54,11 @@ function Home() {
                     <div className="grid grid-cols-3 gap-6">
                             {levels.map(((level) => (
                                 <div key={level.id} className="level">
-                                    <a href={level.url}>
-                                        <img src={`${import.meta.env.VITE_STRAPI_BASE_URL}${level.image.url}`} className="max-h-48  mx-auto boss-image" alt={level.name} />
+                                    <a href={level.acf.url}>
+                                        <img src={`${level.acf.image.url}`} className="max-h-48  mx-auto boss-image" alt={level.acf.name} />
                                     </a>
                                     <h3 className="text-2xl font-bold text-center mt-4">
-                                        <a href={level.url}>{level.name}</a>
+                                        <a href={level.acf.url}>{level.acf.name}</a>
                                     </h3>
                                 </div>
                             )))}

@@ -8,7 +8,7 @@ function Footer() {
             <div className="footer justify-center">
                 <div className="container mx-auto py-6 justify-center">
                     <p className="text-sm w-full text-center">Made with ❤️</p>
-                    <p className="text-sm w-full text-center">Powered by <a href="https://strapi.io" target="_blank" rel="noopener noreferrer">Strapi</a> and <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a></p>
+                    <p className="text-sm w-full text-center">Powered by <a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a> and <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a></p>
                 </div>
             </div>
         </>
