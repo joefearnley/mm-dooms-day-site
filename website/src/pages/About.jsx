@@ -2,10 +2,8 @@
 import { useState, useEffect } from 'react'
 
 function About() {
-
     const [isLoading, setIsLoading] = useState(false);
     const [pageContent, setPageContent] = useState('');
-    const [pageTitle, setPageTitle] = useState('');
 
     const fetchAboutPageData = async () => {
         const apiUrl = `${import.meta.env.VITE_WP_API_URL}/pages?slug=about`;
@@ -15,7 +13,6 @@ function About() {
             const json = await response.json();
 
             setPageContent(json[0].content.rendered);
-            setPageTitle(json[0].title.rendered);
         } catch (error) {
             console.error('Error fetching levels:', error);
         } finally {
@@ -31,8 +28,8 @@ function About() {
     return (
         <div className="inside-page">
             <div className="container mx-auto">
-                <div className="mx-auto text-center pt-12 pb-24">
-                    <h1 className="text-6xl font-bold">
+                <div className="mx-auto text-center py-12">
+                    <h1 className="text-4xl lg:text-6xl font-bold">
                         About this Site
                     </h1>
                 </div>
@@ -43,7 +40,7 @@ function About() {
                 </div>
             ):(
                 <div className="container mx-auto mb-12">
-                    <div className="mx-auto w-5/6">
+                    <div className="mx-auto w-5/6 md:w-1/2">
                         <div dangerouslySetInnerHTML={{ __html: pageContent }} />
                     </div>
                 </div>

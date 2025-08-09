@@ -3,3 +3,7 @@ body .inside-page a {
     color: var(--color-info);
     text-decoration: underline;
 }
+
+body .inside-page p {
+    margin-bottom: 1.25rem;
+}
