@@ -5,12 +5,11 @@ function Navigation() {
         <>
             <div className="navbar bg-base-100 shadow-sm">
                 <div className="navbar-start">
-                    <div className="lg:hidden">
-                        <NavLink className="text-lg" to="/about">Mega Man Dooms Day</NavLink>
+                    <div>
+                        <NavLink className="text-lg ml-3" to="/about">Mega Man Dooms Day</NavLink>
                     </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <NavLink className="text-xl" to="/">Mega Man Dooms Day</NavLink>
+                <div className="navbar-center">
                 </div>
                 <div className="navbar-end">
                     <ul className="menu menu-horizontal px-1">

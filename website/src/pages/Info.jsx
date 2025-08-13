@@ -28,7 +28,7 @@ function Info() {
     return (
         <div className="inside-page">
             <div className="container mx-auto">
-                <div className="mx-auto text-center py-12">
+                <div className="mx-auto text-center pt-12 pb-6">
                     <h1 className="text-4xl lg:text-6xl font-bold">
                         Site Info
                     </h1>

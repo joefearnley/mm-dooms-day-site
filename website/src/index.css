@@ -7,3 +7,12 @@ body .inside-page a {
 body .inside-page p {
     margin-bottom: 1.25rem;
 }
+
+body .inside-page figure.wp-block-image {
+    margin: 1rem auto;
+}
+
+body .inside-page figure.wp-block-image img {
+    max-width: 500px;
+    margin: 0 auto;
+}
