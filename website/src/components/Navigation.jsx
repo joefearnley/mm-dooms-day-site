@@ -6,7 +6,7 @@ function Navigation() {
             <div className="navbar bg-base-100 shadow-sm">
                 <div className="navbar-start">
                     <div>
-                        <NavLink className="text-lg ml-3" to="/about">Mega Man Dooms Day</NavLink>
+                        <NavLink className="text-lg ml-3" to="/">Mega Man Dooms Day</NavLink>
                     </div>
                 </div>
                 <div className="navbar-center">
