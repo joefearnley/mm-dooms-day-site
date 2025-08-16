@@ -6,7 +6,7 @@
   "homepage": "https://joefearnley.com/mm-dooms-day-site",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/mm-dooms-day-site/",
     "lint": "eslint .",
     "preview": "vite preview",
     "clean": "rm -rf dist/*",
