@@ -5,12 +5,10 @@ import { useParams } from "react-router"
 function Level() {
     let { levelId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
-    // const [pageContent, setPageContent] = useState('');
-
-    console.log('Level ID:', levelId);
+    const [levelData, setLevelData] = useState({});
 
     const fetchLevelData = async () => {
-        const apiUrl = `https://api.megamanmaker.com/level/${levelId}`;
+        const apiUrl = `${import.meta.env.VITE_WP_LEVEL_DETAIL_API_URL}/${levelId}`;
 
         console.log('Fetching Level Data from:', apiUrl);
 
@@ -18,13 +16,9 @@ function Level() {
             const response = await fetch(apiUrl);
             const json = await response.json();
 
-            console.log('Level Data:', json);
-
-            // setPageContent(json[0].content.rendered);
+            setLevelData(json);
         } catch (error) {
             console.error('Error fetching levels:', error);
-
-            console.log(error);
         } finally {
             setIsLoading(false);
         }

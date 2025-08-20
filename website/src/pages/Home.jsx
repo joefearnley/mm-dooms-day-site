@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react'
+import LevelDetail from '../components/LevelDetail'
 
 function Home() {
     const [isLoading, setIsLoading] = useState(false);
@@ -40,15 +41,8 @@ function Home() {
             ):(
                 <div className="container mx-auto mb-12">
                     <div className="grid gird-cols-1 md:grid-cols-3 gap-6">
-                            {levels.map(((level) => (
-                                <div key={level.id} className="level">
-                                    <a href={level.acf.url}>
-                                        <img src={`${level.acf.image.url}`} className="max-h-48  mx-auto boss-image" alt={level.acf.name} />
-                                    </a>
-                                    <h3 className="text-2xl font-bold text-center mt-4">
-                                        <a href={level.acf.url}>{level.acf.name}</a>
-                                    </h3>
-                                </div>
+                            {levels.map((level => (
+                                <LevelDetail key={level.id} levelId={level.acf.mmm_level_id} />
                             )))}
                     </div>
                 </div>
