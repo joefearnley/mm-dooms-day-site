@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router"
+import { Link } from "react-router"
 
 function Level() {
     let { levelId } = useParams();
@@ -29,6 +29,14 @@ function Level() {
 
     return (
         <div className="container mt-12 mx-auto">
+            <div className="w-5/6 mx-auto">
+                <Link to="/" className="mb-6 flex items-center gap-2 text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                    </svg>
+                    <span>Back to All Levels</span>
+                </Link>
+            </div>
             {isLoading ? (
                 <div className="text-center">
                     <div className="skeleton h-32 w-32 shrink-0 rounded-full mx-auto mb-6 mt-10"></div>
