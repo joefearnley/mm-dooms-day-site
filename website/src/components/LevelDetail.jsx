@@ -29,7 +29,7 @@ function LevelDetail(props) {
         <>
         {isLoading ? (
             <div className="text-center w-3/4 mx-auto">
-                <div className="skeleton h-32 w-32 shrink-0 rounded-full mx-auto mb-6 mt-10"></div>
+                <div className="skeleton h-32 w-32 shrink-0 smx-auto mb-6 mt-10"></div>
                 <div className="skeleton h-10 w-full mb-6"></div>
                 <div className="skeleton h-10 w-full mb-6"></div>
                 <div className="skeleton h-10 w-full"></div>
@@ -38,27 +38,27 @@ function LevelDetail(props) {
             <div className="card bg-base-100 w-96 shadow-sm mx-auto">
                 <figure className="px-10 pt-10">
                     <a href={`/level/${props.levelId}`}>
-                        <img src={level.thumbnail_url} alt={level.name} className="h-32 w-32 rounded-full" />
+                        <img src={level.thumbnail_url} alt={level.name} className="h-32 w-32" />
                     </a>
                 </figure>
                 <div className="card-body items-center text-center">
-                    <h2 className="card-title">{level.name}</h2>
+                    <h2 className="card-title text-white">{level.name}</h2>
                     <div className="my-3 flex gap-14 md:!gap-14">
                         <div className="flex flex-col items-center justify-center w-16">
-                            <p className="text-lg font-bold text-navy-700 dark:text-white">{level.likes}</p>
-                            <p className="text-sm font-normal text-gray-600">Likes</p>
+                            <p className="text-lg font-bold text-white dark:text-white">{level.likes}</p>
+                            <p className="text-sm font-normal text-white">Likes</p>
                         </div>
                         <div className="flex flex-col items-center justify-center w-16">
-                            <p className="text-lg font-bold text-navy-700 dark:text-white">{level.dislikes}</p>
-                            <p className="text-sm font-normal text-gray-600">Dislikes</p>
+                            <p className="text-lg font-bold text-white dark:text-white">{level.dislikes}</p>
+                            <p className="text-sm font-normal text-white">Dislikes</p>
                         </div>
                         <div className="flex flex-col items-center justify-center w-16">
-                            <p className="text-lg font-bold text-navy-700 dark:text-white">{level.downloads}</p>
-                            <p className="text-sm font-normal text-gray-600">Downloads</p>
+                            <p className="text-lg font-bold text-white dark:text-white">{level.downloads}</p>
+                            <p className="text-sm font-normal text-white">Downloads</p>
                         </div>
                     </div>
                     <div className="card-actions">
-                        <a href={`/level/${props.levelId}`} className="btn btn-info">Details</a>
+                        <a href={`/level/${props.levelId}`} className="btn btn-bg-white text-grey-700 border-[#e5e5e5] text-lg">Details</a>
                     </div>
                 </div>
             </div>

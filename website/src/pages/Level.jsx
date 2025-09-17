@@ -30,7 +30,7 @@ function Level() {
     return (
         <div className="container mt-12 mx-auto">
             <div className="w-5/6 mx-auto">
-                <Link to="/" className="mb-6 flex items-center gap-2 text-sm">
+                <Link to="/" className="mb-6 flex items-center gap-2 text-sm text-white hover:underline">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
                     </svg>
@@ -39,7 +39,7 @@ function Level() {
             </div>
             {isLoading ? (
                 <div className="text-center">
-                    <div className="skeleton h-32 w-32 shrink-0 rounded-full mx-auto mb-6 mt-10"></div>
+                    <div className="skeleton h-32 w-32 shrink-0 mx-auto mb-6 mt-10"></div>
                     <div className="skeleton h-12 w-1/4 mb-6 mx-auto"></div>
                     <div className="skeleton h-12 w-1/4 mb-12 mx-auto"></div>
                 </div>
@@ -48,27 +48,27 @@ function Level() {
                     <div className="card bg-base-100 w-96 shadow-sm">
                         <figure className="px-10 pt-10">
                             <a href={`/level/${level.id}`}>
-                                <img src={level.thumbnail_url} alt={level.name} className="h-32 w-32 rounded-full" />
+                                <img src={level.thumbnail_url} alt={level.name} className="h-32 w-32" />
                             </a>
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title text-4xl">{level.name}</h2>
+                            <h2 className="card-title text-4xl text-white">{level.name}</h2>
                             <div className="my-3 flex gap-14 md:!gap-14">
                                 <div className="flex flex-col items-center justify-center w-16">
-                                    <p className="text-lg font-bold text-navy-700 dark:text-white">{level.likes}</p>
-                                    <p className="text-sm font-normal text-gray-600">Likes</p>
+                                    <p className="text-lg font-bold text-white dark:text-white">{level.likes}</p>
+                                    <p className="text-sm font-normal text-white">Likes</p>
                                 </div>
                                 <div className="flex flex-col items-center justify-center w-16">
-                                    <p className="text-lg font-bold text-navy-700 dark:text-white">{level.dislikes}</p>
-                                    <p className="text-sm font-normal text-gray-600">Dislikes</p>
+                                    <p className="text-lg font-bold text-white dark:text-white">{level.dislikes}</p>
+                                    <p className="text-sm font-normal text-white">Dislikes</p>
                                 </div>
                                 <div className="flex flex-col items-center justify-center w-16">
-                                    <p className="text-lg font-bold text-navy-700 dark:text-white">{level.downloads}</p>
-                                    <p className="text-sm font-normal text-gray-600">Downloads</p>
+                                    <p className="text-lg font-bold text-white dark:text-white">{level.downloads}</p>
+                                    <p className="text-sm font-normal text-white">Downloads</p>
                                 </div>
                             </div>
                             <div className="card-actions">
-                                <a href={`https://megamanmaker.com/?level=${level.id}`} target="_blank" className="btn btn-info">
+                                <a href={`https://megamanmaker.com/?level=${level.id}`} target="_blank" className="btn btn-bg-white text-grey-700 border-[#e5e5e5] text-lg">
                                     Play game
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />

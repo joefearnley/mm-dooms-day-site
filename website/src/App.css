@@ -15,3 +15,13 @@ body {
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
 }
+
+main {
+    background-image: url('https://mm-dooms-day.jfrnly.dev/wp-content/uploads/2025/09/IMG_0277.jpg');
+}
+
+main .container .card {
+    background-image: url('https://mm-dooms-day.jfrnly.dev/wp-content/uploads/2025/09/mm-background-image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
