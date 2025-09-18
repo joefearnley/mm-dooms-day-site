@@ -55,15 +55,15 @@ function Level() {
                             <h2 className="card-title text-4xl text-white">{level.name}</h2>
                             <div className="my-3 flex gap-14 md:!gap-14">
                                 <div className="flex flex-col items-center justify-center w-16">
-                                    <p className="text-lg font-bold text-white dark:text-white">{level.likes}</p>
+                                    <p className="text-lg font-bold text-white">{level.likes}</p>
                                     <p className="text-sm font-normal text-white">Likes</p>
                                 </div>
                                 <div className="flex flex-col items-center justify-center w-16">
-                                    <p className="text-lg font-bold text-white dark:text-white">{level.dislikes}</p>
+                                    <p className="text-lg font-bold text-white">{level.dislikes}</p>
                                     <p className="text-sm font-normal text-white">Dislikes</p>
                                 </div>
                                 <div className="flex flex-col items-center justify-center w-16">
-                                    <p className="text-lg font-bold text-white dark:text-white">{level.downloads}</p>
+                                    <p className="text-lg font-bold text-white">{level.downloads}</p>
                                     <p className="text-sm font-normal text-white">Downloads</p>
                                 </div>
                             </div>
